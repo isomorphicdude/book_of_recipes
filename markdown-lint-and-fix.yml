@@ -1,0 +1,34 @@
+name: Markdown Lint and Fix
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  markdown-lint:
+    name: Lint and Fix Markdown
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        # written by GPT4o
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install markdownlint and prettier
+        run: |
+          npm install -g markdownlint-cli@0.34.0 prettier@2.9.2
+
+      - name: Run markdownlint
+        run: markdownlint "**/*.md" --config .markdownlint.json
+
+      - name: Fix Markdown files with Prettier
+        run: prettier --write "**/*.md"
+
