@@ -4,3 +4,4 @@
 * [Guacamole](guacamole.md)
 
 ## Hot sauces
+* [Hot Green Pepper Sauce](greensauce.md)
